@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.zhao.domain.Classes">
+		<id name="cid">
+			<generator  class="increment"></generator>
+		</id>
+		<property name="name"></property>
+		<set name="students" cascade="save-update">
+			<key>
+				<column name="cid"></column>
+			</key>
+			<one-to-many class="com.zhao.domain.Student"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>

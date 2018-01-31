@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.custom.i18n.resources" value="msg"></constant>
+	<!-- 开启开发模式 -->
+    <constant name="struts.devMode" value="true" />
+    <package name="p1" extends="struts-default">
+    	<action name="sayHello_*" class="com.zhao.action.HelloAction" method="{1}">
+    		<result name="success">/success.jsp</result>
+    	</action>
+    </package>
+    <package name="User" extends="struts-default">
+    	<result-types>
+    		<result-type name="captcha" class="com.zhao.result.CaptachResult"></result-type>
+    	</result-types>
+    	<interceptors>
+    		<interceptor name="AInterceptor" class="com.zhao.Interceptor.AInterceptor"></interceptor>
+    		<interceptor-stack name="mydefaultstack">
+    		
+    		</interceptor-stack>
+    	</interceptors>
+    	
+    	<action name="user_*" class="com.zhao.action.UserAction" method="{1}">
+    		<result name="login">/login.jsp</result>
+    		<result name="success" >/success.jsp</result>
+    		<result name="captcha" type="captcha"></result>
+    	</action>
+    </package>
+</struts>
